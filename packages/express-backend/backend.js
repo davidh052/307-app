@@ -1,9 +1,10 @@
 import express from "express";
+import cors from "cors";
 
 const app = express();
 const port = 8000;
 
-
+app.use(cors());
 app.use(express.json());
 
 const users = {
@@ -115,13 +116,13 @@ app.get("/users", (req, res) => {
 
 
   const findUsersByNameAndJob = (name, job) => {
-    return users["users_list"].filter((user) => {
+    return users["users_list"].filter( (user) => {
       if (name != undefined && job != undefined) {       
         return user["name"] === name && user["job"] === job;
 
       } else {
         return true;
-        
+
       }
     });
   };
@@ -138,6 +139,7 @@ app.get("/users", (req, res) => {
     } else {
       res.send(result);
     }
+
   });
   
   
