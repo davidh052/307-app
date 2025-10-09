@@ -78,14 +78,18 @@ app.get("/users", (req, res) => {
 
 
   const addUser = (user) => {
+
+    if (!user.id) {
+      user.id = "id" + Math.floor(Math.random() * 100000);
+    }
     users["users_list"].push(user);
     return user;
   };
   
   app.post("/users", (req, res) => {
     const userToAdd = req.body;
-    addUser(userToAdd);
-    res.send();
+    const newUser = addUser(userToAdd);
+    res.status(201).send(newUser);
   });
   
 
