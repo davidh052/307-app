@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import userModel from "./user";
+import userModel from "./user.js";
 
 mongoose.set("debug", true);
 
@@ -21,7 +21,7 @@ function getUsers(name, job) {
   } else {
     return findUserByNameAndJob(name,job);
   }
-  
+
   return promise;
 }
 
